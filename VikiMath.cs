@@ -31,7 +31,6 @@ namespace VikiMath
             }
             return probabilities.Count - 1;
         }
-        
         public static UpdateMovementAnimation(Transform transform, Vector3 velocity, Animator animator)
         {
             var movementDirection = velocity;
