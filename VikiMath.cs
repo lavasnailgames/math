@@ -31,5 +31,18 @@ namespace VikiMath
             }
             return probabilities.Count - 1;
         }
+        
+        public static UpdateMovementAnimation(Transform transform, Vector3 velocity, Animator animator)
+        {
+            var movementDirection = velocity;
+            var faceForward = Quaternion.FromToRotation(transform.forward, Vector3.forward);
+            var relativeMovementDirection = faceForward * movementDirection;
+
+            var forward = relativeMovementDirection.y;
+            var right = relativeMovementDirection.z;
+
+            animator.SetFloat("InputX", forward);
+            animator.SetFloat("InputY", right);
+        }
     }
 }
