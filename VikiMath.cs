@@ -43,5 +43,15 @@ namespace VikiMath
             animator.SetFloat("InputX", forward);
             animator.SetFloat("InputY", right);
         }
+        
+        public void MoveVRCharacter(Vector3 sanitizedInput, Vector3 cameraDirection, Transform playerObject)
+        {
+            var faceForward = Quaternion.FromToRotation(playerObject.forward, cameraDirection);
+            var relativeMovementDirection = faceForward * sanitizedInput;
+
+            var forward = relativeMovementDirection.z;
+            var right = relativeMovementDirection.x;
+            playerObject.transform.position += new Vector3(right, 0, forward) * 5 * Time.deltaTime;
+        }
     }
 }
